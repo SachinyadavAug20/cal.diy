@@ -687,6 +687,13 @@ describe("handleNewBooking", () => {
             ],
           });
 
+          expect(createdBooking.appsStatus).toEqual([
+            expect.objectContaining({
+              failures: 1,
+              success: 0,
+            }),
+          ]);
+
           const iCalUID = expectICalUIDAsString(createdBooking.iCalUID);
 
           expectSuccessfulBookingCreationEmails({
